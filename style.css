@@ -1,4 +1,4 @@
-/* --- Global Styles --- */
+/* --- Global Reset & Dark Theme --- */
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +13,7 @@ body {
   min-height: 100vh;
 }
 
-/* --- Fixed 3D Canvas Background Fix --- */
+/* --- Fixed 3D Background Canvas --- */
 #bgCanvas {
   position: fixed;
   top: 0;
@@ -25,7 +25,7 @@ body {
   display: block;
 }
 
-/* --- Top Navigation Bar --- */
+/* --- Top Header Navigation --- */
 .top-nav {
   position: fixed;
   top: 0;
@@ -60,6 +60,12 @@ body {
   font-size: 0.9rem;
   text-decoration: none;
   transition: all 0.2s ease;
+}
+
+.btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
 }
 
 .btn-discord {
@@ -98,7 +104,7 @@ body {
   margin-top: 4px;
 }
 
-/* --- Collapsible Navigation Sidebar Fix --- */
+/* --- Collapsible Navigation Sidebar --- */
 .sidebar {
   position: fixed;
   left: 0;
@@ -140,7 +146,13 @@ body {
   background: rgba(255, 255, 255, 0.1);
 }
 
-.sidebar.expanded .arrow-icon {
+.sidebar-toggle svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.sidebar.expanded .sidebar-toggle svg {
   transform: rotate(180deg);
 }
 
@@ -163,6 +175,12 @@ body {
   white-space: nowrap;
 }
 
+.sidebar-item svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
 .sidebar-item:hover, .sidebar-item.active {
   color: #ffffff;
   background: rgba(255, 255, 255, 0.1);
@@ -179,7 +197,7 @@ body {
   opacity: 1;
 }
 
-/* --- Hero Section --- */
+/* --- Hero Center Section --- */
 .hero {
   min-height: 60vh;
   display: flex;
@@ -213,7 +231,7 @@ body {
   text-decoration: underline;
 }
 
-/* --- Content Container & Cards --- */
+/* --- Cards & Layout --- */
 .content-container {
   max-width: 900px;
   margin: 0 auto;
@@ -255,7 +273,7 @@ body {
   line-height: 1.6;
 }
 
-/* --- Countdown Timer Styles Fix --- */
+/* --- Countdown Display --- */
 .countdown-container {
   display: flex;
   align-items: center;
@@ -277,7 +295,7 @@ body {
 .time-number {
   font-size: 2.2rem;
   font-weight: 700;
-  font-mono: monospace;
+  font-family: monospace;
   line-height: 1;
 }
 
@@ -295,18 +313,17 @@ body {
   margin-bottom: 12px;
 }
 
-.released-text {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #00ff88;
-}
-
-/* --- Progress Panel --- */
+/* --- Status Progress Section --- */
 .panel-header {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-bottom: 20px;
+}
+
+.panel-header svg {
+  width: 20px;
+  height: 20px;
 }
 
 .status-grid {
