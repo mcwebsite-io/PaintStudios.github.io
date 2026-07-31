@@ -1,4 +1,3 @@
-[script.js](https://github.com/user-attachments/files/30566024/script.js)
 // --- 3D Canvas Background Logic ---
 const canvas = document.getElementById('bgCanvas');
 const ctx = canvas.getContext('2d');
