@@ -1,0 +1,445 @@
+[style.css](https://github.com/user-attachments/files/30585917/style.css)
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #050505;
+  color: #ffffff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+#bgCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Sidebar Styling */
+.sidebar {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 60px;
+  background: rgba(18, 18, 18, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid #2a2a2a;
+  border-left: none;
+  border-radius: 0 16px 16px 0;
+  z-index: 100;
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  padding: 1.5rem 0.6rem;
+}
+
+.sidebar.expanded {
+  width: 180px;
+}
+
+.sidebar-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 0.8rem;
+  background: transparent;
+  border: none;
+  color: #888888;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease, transform 0.35s ease;
+}
+
+.sidebar-toggle:hover {
+  color: #ffffff;
+}
+
+.sidebar.expanded .arrow-icon {
+  transform: rotate(180deg);
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 2.5rem;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.7rem 0.8rem;
+  color: #888888;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.sidebar-item svg {
+  min-width: 20px;
+}
+
+.sidebar-item .nav-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.sidebar.expanded .sidebar-item .nav-text {
+  opacity: 1;
+}
+
+.sidebar-item:hover, .sidebar-item.active {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+/* Header Navigation */
+.top-nav {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  pointer-events: none;
+}
+
+.top-nav a, .top-buttons {
+  pointer-events: auto;
+}
+
+.nav-spacer {
+  flex: 1;
+}
+
+/* Navigation Buttons */
+.top-buttons {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.btn-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.60rem 1.2rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  background: #121212;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 255, 255, 0.3);
+}
+
+.btn-discord.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-roblox:hover {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 255, 255, 0.3);
+}
+
+.btn-status {
+  font-size: 0.70rem;
+  color: #888888;
+  letter-spacing: 0.03rem;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 4.5rem;
+  letter-spacing: 0.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+
+.hero h2 {
+  font-size: 1.4rem;
+  letter-spacing: 0.2rem;
+  font-weight: 500;
+  color: #e0e0e0;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #888888;
+  letter-spacing: 0.12rem;
+  font-weight: 300;
+}
+
+.hero p .owner-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px dashed #555555;
+  transition: all 0.2s ease;
+  pointer-events: auto;
+}
+
+.hero p .owner-link:hover {
+  border-bottom-color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* Content Container & Showcase Cards */
+.content-container {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto 5rem auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.game-card, .info-card {
+  background: rgba(18, 18, 18, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid #2a2a2a;
+  border-radius: 14px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.badge-wrapper {
+  margin-bottom: 1rem;
+}
+
+.launch-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  color: #000;
+  background: #ffffff;
+  padding: 0.35rem 0.8rem;
+  border-radius: 20px;
+}
+
+.game-card h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.6rem;
+}
+
+.game-desc, .info-card p {
+  font-size: 0.95rem;
+  color: #aaaaaa;
+  line-height: 1.6;
+}
+
+.card-actions {
+  margin-top: 1.5rem;
+}
+
+.info-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.6rem;
+}
+
+/* Progress Panel Styling */
+.progress-panel {
+  text-align: left;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.panel-header svg {
+  color: #888888;
+}
+
+.panel-header h3 {
+  margin-bottom: 0;
+}
+
+.status-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.status-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  transition: border-color 0.2s ease;
+}
+
+.status-item:hover {
+  border-color: #444444;
+}
+
+.status-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #dddddd;
+  letter-spacing: 0.03rem;
+}
+
+.status-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+}
+
+.badge-wip {
+  color: #ffd166;
+  background: rgba(255, 209, 102, 0.1);
+  border: 1px solid rgba(255, 209, 102, 0.3);
+}
+
+.badge-pending {
+  color: #888888;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #333333;
+}
+
+/* Countdown Container Styling */
+.countdown-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+}
+
+.time-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.time-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+}
+
+.time-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #888888;
+  letter-spacing: 0.08rem;
+  margin-top: 0.2rem;
+}
+
+.time-colon {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #555555;
+  margin-bottom: 0.8rem;
+}
+
+.released-text {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.1rem;
+}
+
+/* Footer License */
+.footer {
+  position: relative;
+  z-index: 10;
+  padding: 1.5rem 0;
+  text-align: center;
+}
+
+.footer p {
+  font-size: 0.75rem;
+  color: #666666;
+}
+
+.footer a {
+  color: #888888;
+  text-decoration: underline;
+}
+
+.footer a:hover {
+  color: #ffffff;
+}
